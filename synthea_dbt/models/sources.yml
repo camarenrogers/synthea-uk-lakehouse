@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: raw
+    meta:
+      external_location: "iceberg_scan('/Users/camarenrogers/projects/synthea-uk-lakehouse/warehouse/raw/{name}')"
+    tables:
+      - name: patients
+        columns:
+          - name: Id
+            data_tests:
+              - unique
+              - not_null
+      - name: encounters
+        columns:
+          - name: Id
+            data_tests:
+              - unique
+              - not_null
+          - name: PATIENT
+            data_tests:
+              - not_null
+      - name: conditions
+      - name: observations
+      - name: medications
